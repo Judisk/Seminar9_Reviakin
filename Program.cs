@@ -28,36 +28,42 @@ for (int i = 0; i < questionsArray.Length; i++)
     AsKQuest(questionsArray[i]);
 }
 
-if (countCorrect==questionsArray.Length)   System.Console.WriteLine($"Поздравляем вы ответили правильно на вопросы ");
-else if (countCorrect>countIncorrect)     {System.Console.WriteLine($"Поздравляем вы ответили правильно на большее кол-во вопросов "); CountCorrectAnswer();}
-else if  (countCorrect>countIncorrect)    {System.Console.WriteLine($"К сожалению вы ответили правильно на меньшее кол-во вопросов "); CountCorrectAnswer();}
-else if ((countIncorrect==questionsArray.Length))System.Console.WriteLine($"Поздравляем вы бездарь ");
+if (countCorrect==questionsArray.Length)           
+    Console.WriteLine($"Поздравляем вы ответили правильно на вопросы ");
 
+else if ((countIncorrect==questionsArray.Length))   
+    Console.WriteLine($"Поздравляем вы бездарь ");
+
+else if (countCorrect>countIncorrect)               
+    {Console.WriteLine($"Поздравляем вы ответили правильно на большее кол-во вопросов ");CountCorrectAnswer();} 
+
+else if  (countCorrect<countIncorrect) 
+    {Console.WriteLine($"К сожалению вы ответили правильно на меньшее кол-во вопросов ");CountCorrectAnswer();}
+
+int ansver;
 void AsKQuest(string AskNow)
 {   
-    int ansver = 0;
+
     while (true)
     {
-
-        AskQuestion(AskNow,ref ansver);
-        switch (ansver)
-        {    
-            case 1:CheckCorrect(AskNow,ansver);clear();return;
-            case 2:CheckCorrect(AskNow,ansver);clear();return;
-            case 3:CheckCorrect(AskNow,ansver);clear();return;
-            case 4:CheckCorrect(AskNow,ansver);clear();return;
-            case 000: return;
-            default: Console.WriteLine("Неверное значение"); break;
+        ansver = AskQuestion(AskNow);
+        if(ansver == 1 || ansver == 2 || ansver == 3 || ansver == 4)
+        {
+                    CheckCorrect(AskNow,ansver);clear();return;
         }
+        else if (ansver==000) return;
+        else {Console.WriteLine("Неверное значение"); break; }
     }
+
 }
 
-void AskQuestion(string Ask , ref int ansver )
+int AskQuestion(string Ask)
  {
-     System.Console.WriteLine(Ask);
-     ansver = int.Parse(Console.ReadLine());
-
+    System.Console.WriteLine(Ask);
+    ansver = int.Parse(Console.ReadLine());
+    return ansver;
 }
+
 void CheckCorrect(string Ask , int ansver)
 {
     if (questions[Ask]==ansver)countCorrect++;
