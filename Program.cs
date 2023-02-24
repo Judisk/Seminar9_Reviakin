@@ -35,10 +35,10 @@ else if ((countIncorrect==questionsArray.Length))
     Console.WriteLine($"Поздравляем вы бездарь ");
 
 else if (countCorrect>countIncorrect)               
-    {Console.WriteLine($"Поздравляем вы ответили правильно на большее кол-во вопросов ");CountCorrectAnswer();} 
+    {Console.WriteLine($"Поздравляем вы ответили правильно на большее кол-во вопросов "); CountCorrectAnswer();} 
 
 else if  (countCorrect<countIncorrect) 
-    {Console.WriteLine($"К сожалению вы ответили правильно на меньшее кол-во вопросов ");CountCorrectAnswer();}
+    {Console.WriteLine($"К сожалению вы ответили правильно на меньшее кол-во вопросов "); CountCorrectAnswer();}
 
 int ansver;
 void AsKQuest(string AskNow)
